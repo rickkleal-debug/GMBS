@@ -1,26 +1,154 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #08090d;
+  --panel: #111318;
+  --panel-raised: #1a1d23;
+  --hairline: #2b2f36;
+
+  /* Legacy token names remain stable for the existing component API. */
+  --gold: #e31c24;
+  --gold-soft: #ff5960;
+  --gold-dim: #7d2025;
+
+  --ivory: #f5f5f5;
+  --slate: #a5a7ad;
+  --slate-dim: #6f737c;
+
+  --ok: #5fd08a;
+  --ok-dim: #173526;
+  --alert: #ff8a65;
+  --alert-dim: #44251e;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-ink: var(--ink);
+  --color-panel: var(--panel);
+  --color-panel-raised: var(--panel-raised);
+  --color-hairline: var(--hairline);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-dim: var(--gold-dim);
+  --color-ivory: var(--ivory);
+  --color-slate: var(--slate);
+  --color-slate-dim: var(--slate-dim);
+  --color-ok: var(--ok);
+  --color-ok-dim: var(--ok-dim);
+  --color-alert: var(--alert);
+  --color-alert-dim: var(--alert-dim);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-quicksand);
+  --font-mono: var(--font-plex-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at 78% -10%, rgb(227 28 36 / 0.08), transparent 34rem),
+    var(--ink);
+  color: var(--ivory);
+  font-family: var(--font-sans);
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.018) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 75%);
+}
+
+.tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.keyhole {
+  clip-path: path("M12 0C5.373 0 0 5.373 0 12c0 4.99 3.053 9.266 7.393 11.06L5 42h14l-2.393-18.94C20.947 21.266 24 16.99 24 12 24 5.373 18.627 0 12 0Z");
+}
+
+.premium-card {
+  position: relative;
+  box-shadow:
+    0 18px 44px rgb(0 0 0 / 0.24),
+    inset 0 1px rgb(255 255 255 / 0.025);
+}
+
+.premium-card::after {
+  position: absolute;
+  top: -1px;
+  left: 1.5rem;
+  width: 4rem;
+  height: 1px;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.72;
+}
+
+.architectural-grid {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  animation: rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
+}
+
+::selection {
+  background: var(--gold);
+  color: white;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+input,
+select,
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+input,
+select {
+  color-scheme: dark;
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  body::before {
+    display: none;
+  }
 }
