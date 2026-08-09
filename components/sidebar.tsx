@@ -60,10 +60,10 @@ export function Sidebar() {
 
       <div className="mt-auto flex items-center gap-3 rounded-2xl border border-white/[0.06] bg-white/[0.025] px-3 py-3.5 shadow-[inset_0_1px_rgba(255,255,255,0.02)]">
         <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-gold/20 bg-gold/10 font-mono text-xs text-gold-soft">
-          HL
+          GU
         </div>
         <div className="min-w-0 flex-1">
-          <div className="truncate text-sm text-ivory">Henrique Leal</div>
+          <div className="truncate text-sm text-ivory">Gustavo</div>
           <div className="truncate text-xs text-slate-dim">Administrador</div>
         </div>
         <Link

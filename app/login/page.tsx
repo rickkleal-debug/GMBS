@@ -81,7 +81,7 @@ export default function LoginPage() {
                 <IconMail className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-dim" />
                 <input
                   type="email"
-                  defaultValue="henrique@imoveisgmbs.com.br"
+                  defaultValue="gustavo@imoveisgmbs.com.br"
                   required
                   className="w-full rounded-xl border border-white/[0.08] bg-panel-raised py-3 pl-10 pr-4 text-sm text-ivory transition-colors focus:border-gold/50"
                 />
